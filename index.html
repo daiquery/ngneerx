@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NGNEERX — Human Performance, Engineered</title>
+  <meta name="description" content="NGNEERX builds modern sports, fitness, and health technology experiences. Human performance, engineered." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <style>
+    body { background-color: #0a0a0b; color: white; font-family: 'Inter', sans-serif; }
+    .orb { position: absolute; border-radius: 9999px; filter: blur(80px); opacity: 0.55; }
+    .glass { backdrop-filter: blur(16px) saturate(1.2); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+    html { scroll-behavior: smooth; }
+    img.logo { filter: drop-shadow(0 0 12px rgba(20,146,255,0.7)); }
+  </style>
+</head>
+<body>
+  <div class="fixed inset-0 -z-10">
+    <div class="orb w-[700px] h-[700px] bg-blue-600/30 left-[10%] top-[15%]"></div>
+    <div class="orb w-[600px] h-[600px] bg-sky-400/20 right-[15%] top-[45%]"></div>
+  </div>
+
+  <header class="sticky top-0 z-40 bg-black/40 backdrop-blur border-b border-white/5">
+    <div class="mx-auto max-w-7xl px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img src="/assets/ngneerx_logo.svg" alt="NGNEERX logo" width="42" height="48" class="logo" />
+        <span class="tracking-[.2em] font-semibold text-white/90">NGNEERX</span>
+      </div>
+      <nav class="hidden md:flex gap-8 text-sm text-white/70">
+        <a href="#about" class="hover:text-white">About</a>
+        <a href="#mission" class="hover:text-white">Mission</a>
+        <a href="#products" class="hover:text-white">Future</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="relative overflow-hidden text-center py-32">
+    <h1 class="text-5xl md:text-6xl font-extrabold drop-shadow-[0_0_25px_rgba(20,146,255,0.6)]">Human Performance,<br><span class="text-blue-400">Engineered</span></h1>
+    <p class="mt-6 text-white/70 max-w-2xl mx-auto">NGNEERX builds intelligent sports, fitness, and health tools for the modern athlete. We merge precision, design, and innovation into experiences that make performance measurable and motivating.</p>
+  </section>
+
+  <section id="products" class="relative py-24">
+    <div class="mx-auto max-w-7xl px-6">
+      <h2 class="text-3xl font-bold mb-8">What’s Next</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="glass p-8 rounded-2xl border border-white/10">
+          <div class="text-xs uppercase text-white/70 mb-2">Launch Slot — 01</div>
+          <h3 class="text-2xl font-semibold mb-3">Runsmith</h3>
+          <p class="text-white/70">Runsmith is your ultimate running companion, blending GPS precision, AI-driven pacing feedback, and community challenges. Designed to rival Nike Run Club and Strava, it helps you forge every run with purpose and data-backed performance insights.</p>
+          <p class="mt-4 text-sm text-white/50">Status: <span class="text-white">TBA</span></p>
+        </div>
+        <div class="glass p-8 rounded-2xl border border-white/10">
+          <div class="text-xs uppercase text-white/70 mb-2">Launch Slot — 02</div>
+          <h3 class="text-2xl font-semibold mb-3">Fitrepo</h3>
+          <p class="text-white/70">Fitrepo is a smart workout ecosystem that adapts to your progress and refines each session. Using machine learning and clean interface design, it tracks, analyzes, and motivates every movement to help you train smarter and reach your peak efficiently.</p>
+          <p class="mt-4 text-sm text-white/50">Status: <span class="text-white">TBA</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 bg-black/40 backdrop-blur">
+    <div class="mx-auto max-w-5xl px-6">
+      <h2 class="text-3xl font-bold mb-4">Contact</h2>
+      <p class="text-white/70 mb-6">Let’s build the future of performance technology together.</p>
+      <form class="grid sm:grid-cols-2 gap-4 glass p-6 rounded-2xl">
+        <input placeholder="Name" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm" />
+        <input placeholder="Email" type="email" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm" />
+        <textarea placeholder="Message" class="sm:col-span-2 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm h-32"></textarea>
+        <button type="submit" class="sm:col-span-2 rounded-2xl bg-blue-600 hover:bg-blue-500 px-6 py-3 font-semibold">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="text-center py-6 text-sm text-white/60 border-t border-white/10">© <span id="year"></span> NGNEERX. All rights reserved.</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const orbs = document.querySelectorAll('.orb');
+    orbs.forEach((el, i) => {
+      gsap.to(el, { duration: 10 + i * 2, y: gsap.utils.random(-40, 40), x: gsap.utils.random(-30, 30), repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    });
+    gsap.fromTo('.logo', { opacity: 0.6 }, { opacity: 1, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+  </script>
+</body>
+</html>
